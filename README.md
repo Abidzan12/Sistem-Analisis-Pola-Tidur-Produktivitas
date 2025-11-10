@@ -1,63 +1,63 @@
-Sistem Analisis Pola Tidur & Produktivitas
+# 💤 Analisis Pola Tidur & Produktivitas
 
-Deskripsi
+Program ini dibuat menggunakan **C++** untuk membantu pengguna menganalisis hubungan antara **jam tidur**, **jam belajar**, dan **tingkat produktivitas** harian.  
+Data dapat diinput, ditampilkan, diurutkan berdasarkan produktivitas, dicari berdasarkan hari tertentu, serta dianalisis untuk memberikan rekomendasi pola tidur optimal.
 
-Program ini adalah aplikasi konsol C++ sederhana yang dirancang untuk membantu pengguna melacak dan menganalisis pola tidur, jam belajar, dan tingkat produktivitas harian.
-Program mencatat data harian yang dimasukkan pengguna, mengelolanya dalam struktur data, dan menyajikan analisis sederhana.
+---
 
-Tujuan program ini adalah:
+## 📋 Fitur Utama
 
-1.Mencatat data tidur, belajar, dan produktivitas secara terstruktur.
+| No | Fitur | Deskripsi |
+|----|--------|------------|
+| 1 | **Input Data** | Menambahkan data harian berupa jam tidur, jam belajar, dan tingkat produktivitas (1–10). |
+| 2 | **Lihat Data** | Menampilkan semua data yang telah diinput dalam format tabel. |
+| 3 | **Ranking Produktivitas** | Mengurutkan data berdasarkan tingkat produktivitas tertinggi ke terendah menggunakan **Bubble Sort**. |
+| 4 | **Cari Hari ke-N** | Mencari data berdasarkan nomor hari menggunakan **Sequential Search**. |
+| 5 | **Analisis & Rekomendasi** | Menghitung rata-rata tidur, belajar, produktivitas, serta menampilkan rekomendasi pola tidur terbaik. |
+| 0 | **Keluar Program** | Menutup aplikasi. |
 
-2.Mengurutkan hari berdasarkan tingkat produktivitas (dari tertinggi ke terendah).
+---
 
-3.Memberikan analisis dan rekomendasi sederhana untuk membantu pengguna memahami korelasi antara jam tidur dan produktivitas.
+## 🧮 Penjelasan Algoritma yang Digunakan
 
-Fitur Utama
-Menu utama interaktif dengan opsi:
+Dalam program ini terdapat beberapa algoritma utama yang digunakan untuk memproses data.  
+Berikut penjelasan ringkasnya:
 
-   1.Input Data: Memasukkan data harian (Jam Tidur, Jam Belajar, Produktivitas 1-10).
-	 
-   2.Lihat Data: Menampilkan semua data yang telah dimasukkan dalam format tabel.
-	 
-   3.Ranking Produktivitas: Menampilkan data yang telah diurutkan berdasarkan produktivitas tertinggi.
-	 
-   4.Cari Data Hari ke-N: Mencari dan menampilkan data dari hari tertentu.
-	 
-   5.Analisis & Rekomendasi: Menampilkan rata-rata, hari terbaik, dan rekomendasi pola tidur.
-	 
-   6.Validasi untuk memastikan data ditampilkan hanya jika sudah ada.
-	 
-   7.Keluar: Keluar dari program.
+### 🔹 1. Bubble Sort
+Digunakan untuk **mengurutkan data produktivitas dari tertinggi ke terendah** pada menu *Ranking Produktivitas*.  
+Algoritma ini bekerja dengan cara:
+- Membandingkan dua elemen bersebelahan.
+- Jika urutannya salah, maka ditukar.
+- Proses ini diulang sampai seluruh data terurut.
+
+**Alasan pemilihan:**
+- Mudah diimplementasikan dan dipahami.
+- Cocok untuk dataset kecil (≤ 30 hari).
+- Tidak membutuhkan struktur data kompleks.
+
+---
+
+### 🔹 2. Sequential Search (Linear Search)
+Digunakan dalam fungsi *Cari Hari ke-N* untuk menemukan data berdasarkan nomor hari.  
+Algoritma ini melakukan pencarian dari elemen pertama hingga terakhir sampai menemukan nilai yang sesuai.
+
+**Alasan pemilihan:**
+- Tidak memerlukan data terurut.
+- Paling sederhana untuk implementasi pencarian.
+- Efisien untuk jumlah data kecil.
+
+---
 
 
-Algoritma & Struktur Program
 
-Percabangan: if / else (untuk validasi data kosong), if-else if (untuk menu dan logika rekomendasi).
+## ⚙️ Struktur Data
 
-Perulangan: do-while (untuk menu utama agar terus tampil), for (untuk iterasi data saat menampilkan, sorting, searching, dan analisis).
+Program menggunakan **struct `Data`** untuk menyimpan informasi setiap hari:
 
-Struct: struct Data digunakan untuk menggabungkan hari, jamTidur, jamBelajar, dan produktivitas ke dalam satu unit data.
-
-Array: Menggunakan 1D Array of Structs (Data data[30]) untuk menyimpan data harian (kapasitas maks 30 hari).
-
-Sorting: Menggunakan Bubble Sort (pada fungsi sortingProduktivitas) untuk mengurutkan data berdasarkan skor produktivitas dari tertinggi ke terendah.
-
-Searching: Menggunakan Sequential Search (pada fungsi cariHari) untuk mencari data berdasarkan input hari ke-N.
-
-Struktur File
-
-Projek.cpp → Kode sumber utama program.
-
-Projek.exe → Hasil kompilasi program (file executable).
-
-.vscode/tasks.json → Konfigurasi build task untuk VS Code.
-
-.gitignore → Daftar file yang diabaikan oleh Git.
-
-README.md → Dokumentasi repo ini.
-
-Catatan
-
-Program ini dibuat untuk proyek mata kuliah Algoritma dan Pemrograman.
-Fitur yang ada saat ini sudah fungsional untuk melacak dan menganalisis data dalam skala kecil (maks 30 data) selama program berjalan.
+```cpp
+struct Data {
+    int hari;
+    float jamTidur;
+    float jamBelajar;
+    int produktivitas;
+};
