@@ -93,14 +93,35 @@ void inputData(Data d[], int &n) {
     d[n].hari = n + 1;
     
     cout << "Jam Tidur (0-24): ";
-    cin >> d[n].jamTidur;
+    
+    if (!(cin >> d[n].jamTidur) || d[n].jamTidur < 0 || d[n].jamTidur > 24) {
+        cout << "\nInput salah!\n";
+        if (cin.fail()) { 
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
+        return; 
+    }
     
     cout << "Jam Belajar (0-24): ";
-    cin >> d[n].jamBelajar;
+    if (!(cin >> d[n].jamBelajar) || d[n].jamBelajar < 0 || d[n].jamBelajar > 24) {
+        cout << "\nInput salah!\n";
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
+        return;
+    }
     
     cout << "Produktivitas (1-10): ";
-    cin >> d[n].produktivitas;
-    
+    if (!(cin >> d[n].produktivitas) || d[n].produktivitas < 1 || d[n].produktivitas > 10) {
+        cout << "\nInput salah!\n";
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
+        return; 
+    }
     n++;
     cout << "\nData berhasil disimpan!\n";
 }
